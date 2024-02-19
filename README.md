@@ -2,8 +2,13 @@
 
 # How to start developing a bevy game
 
+Create a new rust project
 ```
 cargo new my_bevy_game
+```
+Add bevy as a dependency
+```
+cargo add bevy
 ```
 
 
