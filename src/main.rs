@@ -4,9 +4,13 @@ use bevy::prelude::*;
 fn main() {
 	App::new()
     .add_systems(Startup, add_people)
-    .add_systems(Update, (hello_world, greet_people))
+    .add_systems(Update, (
+      hello_world, 
+      (update_people, greet_people).chain()))
     .run();
 }
+// note: .chain() makes them run in order instead of the
+// most optimized way
 
 // Components
 
@@ -30,6 +34,17 @@ fn add_people(mut commands: Commands){
 
 fn hello_world() {
   println!("hello world!");
+}
+
+fn update_people(mut query: Query<&mut Name, With<Person>>){
+  /*First mutable query function.
+  Takes in a name and changes it.*/
+  for mut name in &mut query {
+    if name.0 == "Rudy Reed" {
+      name.0 = "Rudy Francis".to_string();
+      break;
+    }
+  }
 }
 
 fn greet_people(query: Query<&Name, With<Person>>){
