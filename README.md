@@ -6,11 +6,21 @@ Create a new rust project
 ```
 cargo new my_bevy_game
 ```
+
 Add bevy as a dependency
 ```
 cargo add bevy
 ```
 
+How to run:
+```
+cargo run
+```
+
+How to compile for release:
+```
+cargo build --release
+```
 
 
 # Useful Websites:
