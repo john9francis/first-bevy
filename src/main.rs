@@ -1,6 +1,9 @@
 
 use bevy::prelude::*;
 
+// Note: Default plugins opens up a window and 
+// also a game loop
+
 fn main() {
 	App::new()
     .add_plugins(DefaultPlugins)

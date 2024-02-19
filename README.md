@@ -36,5 +36,8 @@ to:
 bevy = "0.13.0"
 ```
 
+# Progress:
+- 2/18/24 got as far as [create your own plugin](https://bevyengine.org/learn/quick-start/getting-started/plugins/)
+
 # Useful Websites:
 - [Getting started with bevy](https://bevyengine.org/learn/quick-start/getting-started/setup/)
