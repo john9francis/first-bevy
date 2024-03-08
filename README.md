@@ -38,6 +38,8 @@ bevy = "0.13.0"
 
 # Progress:
 - 2/18/24 got as far as [create your own plugin](https://bevyengine.org/learn/quick-start/getting-started/plugins/)
+- 3/7/24 Finished the tutorial, ended [here](https://bevyengine.org/learn/quick-start/next-steps/)
 
 # Useful Websites:
 - [Getting started with bevy](https://bevyengine.org/learn/quick-start/getting-started/setup/)
+- [More bevy resources](https://bevyengine.org/learn/quick-start/next-steps/)
