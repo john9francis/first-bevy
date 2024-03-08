@@ -9,9 +9,10 @@ pub struct HelloPlugin;
 impl Plugin for HelloPlugin {
   fn build(&self, app: &mut App) {
     // add things to app here
-    app.add_systems(Startup, add_people)
+    app.insert_resource(GreetTimer(Timer::from_seconds(2.0,
+    TimerMode::Repeating)))
+      .add_systems(Startup, add_people)
       .add_systems(Update, (
-      hello_world, 
       (update_people, greet_people).chain()));
   }
 }
@@ -48,10 +49,6 @@ fn add_people(mut commands: Commands){
 
 // Other Systems
 
-fn hello_world() {
-  println!("hello world!");
-}
-
 fn update_people(mut query: Query<&mut Name, With<Person>>){
   /*First mutable query function.
   Takes in a name and changes it.*/
@@ -63,12 +60,23 @@ fn update_people(mut query: Query<&mut Name, With<Person>>){
   }
 }
 
-fn greet_people(query: Query<&Name, With<Person>>){
+#[derive(Resource)]
+struct GreetTimer(Timer);
+
+
+fn greet_people(
+  time: Res<Time>, 
+  mut timer: ResMut<GreetTimer>,
+  query: Query<&Name, With<Person>>
+){
   /*query means that it iterates over entities who have 
   person and name components. (pretty sure)*/
 
-  for name in &query {
-    println!("hello {}!", name.0)
+  // Only say hello when the timer timesout
+  if timer.0.tick(time.delta()).just_finished(){
+    for name in &query {
+      println!("hello {}!", name.0)
+    }
   }
 }
 
